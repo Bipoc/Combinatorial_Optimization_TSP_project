@@ -1,5 +1,4 @@
-reset;
-
+#The classic model
 param n;
 
 set CITIES ordered := 1..n;
@@ -22,9 +21,3 @@ subject to OneIn{j in CITIES}:
 
 subject to SubtourElim{k in S diff {0,2**n-1}}:
    sum {i in POW[k], j in CITIES diff POW[k]: (i,j) in LINKS} x[i,j] >= 1;
-
- data TSP_instances/burma14.dat;
- 
- option solver gurobi;
- 
- solve;

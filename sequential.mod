@@ -1,5 +1,4 @@
-reset;
-
+#The sequential model
 param n;
 
 set CITIES ordered := 1..n;
@@ -21,9 +20,3 @@ subject to OneIn{j in CITIES}:
 
 subject to Order {i in CITIES, j in CITIES: (i,j) in LINKS and ord(i)!=1 and ord(j)!=1}:
 	u[i] <= u[j] - (n-1)*x[i,j] + n-2;
-
-data TSP_instances/burma14.dat;
- 
-option solver gurobi;
- 
-solve;
