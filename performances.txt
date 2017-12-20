@@ -1,0 +1,13 @@
+			CLASS SEQ FLOW
+burma14		0.43	0.04	0.05
+ulysses16	8.17	0.55	0.14
+ulysses22	\	90	2.5
+wi29		\	tl-27603	6.5-27603
+bayg29		\	1.4	4.4
+dj38		\	21	22
+dantzig42	\	tl-732	48-675
+att48		\	tl-35661	136-33522
+eil51		\	13-426		tl-435
+berlin52	\	9.1	200
+
+tl = 360
