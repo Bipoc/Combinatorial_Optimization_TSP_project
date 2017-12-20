@@ -9,6 +9,8 @@ param COST{LINKS} >= 0;
 var x {LINKS} binary;
 var y {LINKS} integer,>=0, <=n-1;
 
+# Preprocessed heuristic solution
+
 minimize TravelCost:
 	sum {(i,j) in LINKS} COST[i,j]*x[i,j]; 
 
@@ -21,10 +23,12 @@ subject to OneIn{j in CITIES}:
 subject to FlowIffActive {(i,j) in LINKS}:
 	y[i,j] <= (n-1)*x[i,j];
 
-subject to FlowEquations{i in {CITIES diff {1}}}:
-	sum {j in CITIES: (j,i) in LINKS} y[j,i]
-	= 1 + sum {j in CITIES: (i,j) in LINKS} y[i,j];
+subject to FlowEquations{i in {CITIES diff {1}}, j in {CITIES diff{1}}: (i, j) in LINKS}:
+    y[j,i]
+	<= -1 + sum {k in CITIES: (k,j) in LINKS} y[k,j];
 
-subject to FlowInput:
-	n-1 + sum {j in CITIES: (j,1) in LINKS} y[j,1]
-	= sum {j in CITIES: (1,j) in LINKS} y[1,j];
+subject to FlowInput{i in {CITIES diff {1}}}:
+	(n-1)*x[1, i]= y[1,i];
+
+subject to FlowOutput{i in {CITIES diff {1}}}:
+	y[i, 1] = 0;
