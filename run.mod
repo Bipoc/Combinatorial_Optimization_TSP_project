@@ -17,27 +17,38 @@ set test_files_big := {"xqf131"};
 
 set test_files = test_files_all;
 
-
-data TSP_instances/xqf131.dat;
-#data TSP_instances/dantzig42.dat;
-#data TSP_instances/eil51.dat;
-
 # Initialization of the variables
 
-# TSP heuristic
+# Variables for the start heuristic
 
 param curr_node default 1;
 param next_city default 1;
 param min_cost default 1000000;
-param heuristic = 1;
+
+# Variables for the options
+
+param no_options = 0;
+param heuristic_start = 1;
+param verbose = 1;
+
+# Test loop
+# Solve the instance of each test file
 
 for {filename in test_files} {
     reset data;
     
     data ('TSP_instances/' & filename & '.dat');
 
-    if heuristic then {
-        
+    if heuristic_start == 1 then {
+        # Start heuristic => give easily a feasible solution
+        #
+        # Method : nearest neighbour
+        #
+        #
+        #
+
+
+
         for {i in 1..n-1} {
             let min_cost := 10000000;
             for {j in CITIES : ord(j) != curr_node and sum {k in CITIES : ord(k) != ord(j) } x[j, k] == 0 and (curr_node, j) in LINKS} {
@@ -51,25 +62,52 @@ for {filename in test_files} {
         }
         let x[curr_node, 1] := 1;
     } 
+    
+    # Solver options
+    option solver gurobi;
+    option presolve_warnings -1;
+    option solver_msg 0;
 
+    if no_options == 1 then {
+        option gurobi_options 'timelim 360 outlev 1 presolve 0 cuts 0 heurfrac 0 mipstart 0';
+    }
+    else  {
+
+        option gurobi_options 'timelim 360 wantsol 1 ';
+        if model == 1 then {
+            # option classic model
+            option gurobi_options $gurobi_options 'cuts -1 mipstart 1';
+        }
+
+        if model == 2 then {
+            # option sequential model
+            #option gurobi_options $gurobi_options 'covercuts 2 gubcover 2 networkcuts 2';
+        }
+        if model == 3  then {
+            # option flow model
+            option gurobi_options $gurobi_options 'cuts 3 flowcover 2 flowpath 2 ';
+        }
+
+        if heuristic_start == 0 then {
+            option gurobi_options $gurobi_options 'mipstart 0';
+        }
+
+        if verbose == 1 then {
+            option gurobi_options 'outlev 1'; 
+        }
+    }  
+    printf('\n');
+    printf('Computing ' & filename & ' ...\n');
+    if verbose == 1 then {
+        solve;
+    } 
+    else {
+        solve > .garbage_file;
+    }
+
+    printf('Optimal objective : ' & TravelCost & '\n');
+    printf('Computation time : ' & _solve_elapsed_time & '\n');
+
+    printf('\n');
 }
 
-
-
- 
-option solver gurobi;
-
-# option classic model
-#option gurobi_options 'timelim 60 cuts -1 mipstart 1';
-
-# option sequential model
-#option gurobi_options 'timelim 360 cuts -1 mipstart 1 intstart 1';
-
-# option flow model
-# option gurobi_options 'timelim 109 presolve 0 heurfrac 0 cuts 0';
-option gurobi_options 'timelim 360 outlev 1 flowcover 1 flowpath 2 cuts 3 mipstart 1';
-option gurobi_options 'timelim 360 outlev 1 flowcover 2 flowpath 2 cuts 3 mipstart 1';
-
-
-solve;
-display _total_solve_elapsed_time;

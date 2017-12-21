@@ -1,0 +1,66 @@
+Gurobi 7.5.0: outlev 1
+Optimize a model with 17292 rows, 33930 columns and 101530 nonzeros
+Variable types: 0 continuous, 33930 integer (17030 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+02]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+02]
+  RHS range        [1e+00, 1e+00]
+
+Loaded MIP start with objective 704 (0.03s)
+MIP start did not produce a new incumbent solution
+
+Presolve removed 130 rows and 130 columns
+Presolve time: 0.09s
+Presolved: 17162 rows, 33800 columns, 101270 nonzeros
+Variable types: 0 continuous, 33800 integer (17030 binary)
+
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing first log only...
+
+Presolved: 17162 rows, 33800 columns, 101270 nonzeros
+
+Concurrent spin time: 0.00s
+
+Solved with primal simplex
+
+Root relaxation: objective 4.802188e+02, 43034 iterations, 1.41 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  480.21878    0  251  704.00000  480.21878  31.8%     -    1s
+     0     0  480.37744    0  486  704.00000  480.37744  31.8%     -    3s
+H    0     0                     643.0000000  480.37744  25.3%     -    6s
+     0     0  525.62085    0  472  643.00000  525.62085  18.3%     -    6s
+H    0     0                     599.0000000  525.62085  12.3%     -   10s
+     0     0  531.94666    0  518  599.00000  531.94666  11.2%     -   10s
+     0     0  533.43537    0  538  599.00000  533.43537  10.9%     -   10s
+H    0     0                     598.0000000  533.43537  10.8%     -   11s
+     0     0  534.46270    0  535  598.00000  534.46270  10.6%     -   11s
+     0     0  534.46270    0  547  598.00000  534.46270  10.6%     -   11s
+     0     0  539.98603    0  457  598.00000  539.98603  9.70%     -   12s
+     0     0  539.98869    0  516  598.00000  539.98869  9.70%     -   13s
+     0     0  540.00584    0  528  598.00000  540.00584  9.70%     -   13s
+H    0     0                     592.0000000  540.00584  8.78%     -   14s
+     0     0  540.00641    0  559  592.00000  540.00641  8.78%     -   14s
+     0     0  540.02874    0  426  592.00000  540.02874  8.78%     -   17s
+     0     0  540.02874    0  413  592.00000  540.02874  8.78%     -   34s
+
+<BREAK> (gurobi)
+
+<BREAK> (gurobi)
+
+Cutting planes:
+  Gomory: 1
+  Implied bound: 102
+  MIR: 32
+  Flow cover: 39
+
+Explored 1 nodes (61598 simplex iterations) in 38.57 seconds
+Thread count was 4 (of 4 available processors)
+
+Solution count 5: 592 598 599 ... 704
+
+Solve interrupted
+Best objective 5.920000000000e+02, best bound 5.410000000000e+02, gap 8.6149%
