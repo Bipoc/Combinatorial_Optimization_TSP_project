@@ -4,8 +4,8 @@ reset;
 # Uncomment the model you want
 
 #model classic.mod; param model := 1;
-#model sequential.mod; param model := 2; 
-model flow.mod; param model := 3; 
+model sequential.mod; param model := 2; 
+#model flow.mod; param model := 3; 
 
 # Set of files for the test
 # For each filename, there should be a file filename.dat in the directory
@@ -15,7 +15,7 @@ set test_files_small := {"burma14", "ulysses16", "ulysses22", "wi29", "bayg29", 
 set test_files_all := {"burma14", "ulysses16", "ulysses22", "wi29", "bayg29", "dj38", "dantzig42", "att48", "eil51", "berlin52", "xqf131"};
 set test_files_big := {"xqf131"};
 
-set test_files = test_files_all;
+set test_files = test_files_small;
 
 # Initialization of the variables
 
@@ -44,8 +44,9 @@ for {filename in test_files} {
         #
         # Method : nearest neighbour
         #
-        #
-        #
+        # Start with the node 1
+        # At each step, take the nearest unvisited neighbour of the current node and move to this node
+        # At the end, the tour is given by the order of the visited nodes 
 
 
 
@@ -85,7 +86,7 @@ for {filename in test_files} {
         }
         if model == 3  then {
             # option flow model
-            option gurobi_options $gurobi_options 'cuts 3 flowcover 2 flowpath 2 ';
+            option gurobi_options $gurobi_options 'cuts 2 flowcover 2 flowpath 2 covercuts 2 networkcuts 2';
         }
 
         if heuristic_start == 0 then {
@@ -93,7 +94,7 @@ for {filename in test_files} {
         }
 
         if verbose == 1 then {
-            option gurobi_options 'outlev 1'; 
+            option gurobi_options $gurobi_options 'outlev 1'; 
         }
     }  
     printf('\n');
@@ -110,4 +111,3 @@ for {filename in test_files} {
 
     printf('\n');
 }
-
