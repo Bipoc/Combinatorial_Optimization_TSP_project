@@ -7,7 +7,7 @@ set LINKS := {i in CITIES, j in CITIES: ord(i) != ord(j)};
 param COST{LINKS} >= 0;
 
 var x {LINKS} binary;
-var y {LINKS} integer,>=0, <=n-1;
+var y {LINKS} integer, >=0, <=n-1;
 
 # Preprocessed heuristic solution
 
