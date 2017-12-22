@@ -83,7 +83,7 @@ for {filename in test_files} {
 
         if model == 2 then {
             # option sequential model
-            #option gurobi_options $gurobi_options 'covercuts 2 gubcover 2 networkcuts 2';
+            option gurobi_options $gurobi_options 'covercuts 2 gubcover 2 networkcuts 2';
         }
         if model == 3  then {
             # option flow model
