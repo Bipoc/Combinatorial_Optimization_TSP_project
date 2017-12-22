@@ -1,0 +1,59 @@
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+Gurobi 7.5.0: timelim 360
+wantsol 1
+flowcover 2
+flowpath 2
+cuts 3
+
+<BREAK> (gurobi)
+
+<BREAK> (gurobi)
